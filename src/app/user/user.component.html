@@ -1,0 +1,43 @@
+<h2 class="text-center">Student Details</h2>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class = "nav-item">
+                <a routerLink="/students" routerLinkActive="active" class="nav-link" >Student List</a>
+            </li>
+            <li class = "nav-item">
+                <a routerLink="/create-student" routerLinkActive="active" class="nav-link" >Add Student</a>
+            </li>
+        </ul>
+        
+        <button type="button" class="btn btn-danger float-right" style="margin-left: 10px" (click)="logout()" >Logout</button>
+      </div>
+    </div>
+  </nav>
+
+<table class = "table table-striped">
+    <thead>
+        <tr>
+            <th> Student Name</th>
+            <th> School Name </th>
+            <th> Class Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let student of students" >
+            <td> {{ student.studentName }} </td>
+            <td> {{ student.schoolName }} </td>
+            <td> {{ student.className }} </td>
+            
+            <td>
+                <button (click) = "updateStudent(student.id!)" class = "btn btn-info">Update</button>
+                <button (click) = "deleteStudent(student.id!)" class = "btn btn-danger" style="margin-left: 10px">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

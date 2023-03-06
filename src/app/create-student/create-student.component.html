@@ -1,0 +1,48 @@
+
+
+<div class="col-md-6 offset-md-3" aria-hidden="true">
+    
+   
+    
+    <nav class="bg-dark text-white">
+      <br>  
+    <h2 class="text-center"> Create Student </h2>
+    <br>
+    </nav>
+    <form (ngSubmit) = "onSubmit()" ngNativeValidate>
+    
+
+    <br>
+    <br>
+        <div class="form-group form-group-lg">
+            <h5><label for="inputlg"> Student Name:</label></h5>
+            <input type="text" class ="form-control" id = "inputlg"
+                [(ngModel)] = "student.studentName" name = "studentName" placeholder="studentName" required>
+        </div>
+        <br>
+        <br>
+        <div class="form-group">
+            <h5><label> School Name:</label></h5>
+            <input type="text" class ="form-control" id = "schoolName"
+                [(ngModel)] = "student.schoolName" name = "schoolName" placeholder="schoolName" required>
+        </div>
+        <br>
+        <br>
+        <div class="form-group">
+            <h5><label> Class Name:</label></h5>
+            <input type="text" class ="form-control" id = "className"
+                [(ngModel)] = "student.className" name = "className"  placeholder="className" required>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <div class="text-center">
+        <button class = "btn btn-success btn-lg" type ="submit">Submit</button>
+        </div>
+    </form>
+    
+   
+
+</div> 
+

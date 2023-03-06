@@ -1,0 +1,104 @@
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class = "nav-item">
+                <a routerLink="/students" routerLinkActive="active" class="nav-link" >Student List</a>
+            </li>
+            <li class = "nav-item">
+                <a routerLink="/create-student" routerLinkActive="active" class="nav-link" >Add Student</a>
+            </li>
+        </ul>
+       <label>Filter Name : &nbsp;</label>
+    <input [(ngModel)] = 'Name'>&nbsp;
+    <button type="button" (click)="onNameFilter()">Search</button>&nbsp;
+    <button type="button" (click)="onNameFilterClear()">Clear</button>
+    
+        <button type="button" class="btn btn-danger float-right" style="margin-left: 10px" (click)="logout()">Logout</button>
+        
+      </div>
+    </div>
+  </nav>
+  
+
+  <br>
+  <div>
+
+    
+    
+
+    <label>Sort by &nbsp;</label>
+    <select [(ngModel)] = 'sortByParam'>
+        <option value="studentName">StudentName</option>
+        <option value="schoolName">SchoolName</option>
+        <option value="className">ClassName</option>
+
+    </select>&nbsp;
+  </div>
+    <br>
+
+   
+
+   <!--<button type="button" (click)="onSortDirection()">
+        <i *ngIf="sortDirection==='asc'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+               <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+            </svg>
+        </i>
+        <i *ngIf="sortDirection==='desc'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+            </svg>
+        </i>
+    </button>-->
+
+
+  <h2 class="text-center">Student Details</h2>
+<br>
+  
+
+<table   class = "table table-striped" >
+    
+  <thead>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <tr class=" text-center text-white  bg-dark" >
+        <th width="10%" [(ngModel)] = 'sortByParam' value="studentName"(click)="onSortDirection()"><i class="fa fa-fw fa-sort"></i> Student Name</th>
+        <th width="10%" (click)="onSortDirection()"><i class="fa fa-fw fa-sort"></i> School Name </th>
+        <th width="10%" (click)="onSortDirection()"><i class="fa fa-fw fa-sort"></i> Class Name</th>
+        <th width="10%"> Action </th>
+    </tr>
+</thead>
+    
+    <tbody>
+        <tr *ngFor = "let student of students | filter : searchName : 'studentName' | sort :[sortByParam, sortDirection] | paginate:{itemsPerPage: tableSize,currentPage: page,totalItems:count}; let i=index" class=" text-center" >
+
+
+
+            <td> {{ student.studentName }} </td>
+            <td> {{ student.schoolName }} </td>
+            <td> {{ student.className }} </td>
+           
+            <td>
+                <button (click) = "updateStudent(student.id!)" class = "btn btn-info">Update</button>
+            
+                <button (click) = "deleteStudent(student.id!)" class = "btn btn-danger" style="margin-left: 10px">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+    
+</table>
+
+<div>
+    <pagination-controls
+    previousLabel="Prev"
+    nextLabel="Next"
+    (pageChange)="onTableDataChange($event)"></pagination-controls>
+</div>
+
+
+</body>

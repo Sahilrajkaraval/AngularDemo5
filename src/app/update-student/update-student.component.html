@@ -1,0 +1,52 @@
+
+<div class="col-md-6 offset-md-3">
+    <nav class="bg-dark text-white">
+        <br> 
+    <h3 class="text-center"> Update Student </h3>
+    <br>
+    </nav>
+    
+    <form (ngSubmit) = "onSubmit()" ngNativeValidate>
+    
+        <br>
+        <br>
+        <div class="form-group">
+            <h5><label> Student Name:</label></h5>
+            <input type="text" class ="form-control" id = "studentName"
+                [(ngModel)] = "student.studentName" name = "studentName" required>
+        </div>
+     <br>
+     <br>
+        <div class="form-group ">
+            <h5><label> School Name:</label></h5>
+            <input type="text" class ="form-control" id = "schoolName"
+                [(ngModel)] = "student.schoolName" name = "schoolName" required>
+        </div>
+    <br>
+    <br>
+        <div class="form-group">
+            <h5><label> Class Name:</label></h5>
+            <input type="text" class ="form-control" id = "className"
+                [(ngModel)] = "student.className" name = "className">
+               
+        </div>
+
+        <br>
+        <br>
+        <br>
+    <div class="text-center">
+        <button class = "btn btn-primary btn-lg" type ="submit" data-toggle="modal" data-target="#myModal" >Submit</button>
+        
+    </div>
+    <br>
+
+    
+      
+    
+
+    <nav class="navbar fixed-bottom navbar-light bg-dark"></nav>
+    
+    </form>
+    
+    </div> 
+      
